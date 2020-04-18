@@ -45,9 +45,13 @@ This dataset contains 8000 images in total:
 --------------------------
 # Methodology used
 
-We have to convert the images and the captions to integers , so that our model can understand them.
+We have to convert the images and the captions to integers , so that our model can understand them.<br>
+We will be using CNN to get the image features and then use LSTM for predicting the words.
+
+![](./images/model_overview.png)
 
 ### Images to integers
+
 For this problem, we need to extract the features from the images. And the best way to do it is using Convolutional Neural Networks (CNN).
 
 The features from images are extracted with the use of a pre-trained CNN model, **Inceptionv3**. <br>
@@ -57,12 +61,15 @@ This model takes in input of size (299,299,3) and outputs a 1000-category classi
 
 But, since we are not doing classification, we will extract the features of images from one layer before the output (softmax) layer.
 
-Input size = (299,299,3)
+Input size = (299,299,3) <br>
 Output size = (2048)
+
 
 ![](./images/inceptionv3_model.png)
 
+
 ### Text to sequence
+
 To convert text/captions to a sequence of integers, I have used the **_Keras's Tokenizer class_**. 
 
 This is further fed to an **embedding layer** to create a vector which will be the input to the RNN model.
@@ -80,23 +87,30 @@ The output of RNN model, is given to a Dense layer (Feed-forward). <br>
 And this process, goes on till RNN sees "endseq" string in the caption, to indicate that it should stop predicting.
 
 Below picture, gives an overview of how LSTMs work:
+
 ![](./images/lstm_model.png)
 
 So, we can see that the LSTM model predicts many words, but we select the output based on highest probability of words and then feed it back to the RNN-LSTM model to further predict the next word.
 
 The final_model configuration is :
+
 ![](./images/final_model.png)
 
 # Model Success
 
 To determine, model success, I have used the BLEU metric.
 
-Below is the score:
+Below is the score: <br>
 Saved_Model_name Overall BLEU_score: _model_inception_ep007_acc0.325_loss3.153_val_acc0.315_val_loss3.704.h5_ <br>
 BLEU-1: 0.634139 <br>
 BLEU-2: 0.404242 <br>
 
 ![](./images/predicted_image_1.png)
+
+
 ![](./images/predicted_image_2.png)
 
 # References
+
+https://www.youtube.com/watch?v=NfnWJUyUJYU&list=PLkt2uSq6rBVctENoVBg1TpCC7OQi31AlC
+https://towardsdatascience.com/image-captioning-with-keras-teaching-computers-to-describe-pictures-c88a46a311b8
