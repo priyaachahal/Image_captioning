@@ -32,7 +32,7 @@ Convert Image to captions.
 I have used Flickr8k dataset, downloaded from Kaggle.<br>
 Reference: https://www.kaggle.com/minhkhoi1026/flickr
 
-**NOTE:** For below files there is an empty line at the end of file, please remove it before loading in jupyter notebook.
+**NOTE:** **For below files there is an empty line at the end of file, please remove it before loading in jupyter notebook.**
 Flickr8k.token.txt
 Flickr_8k.trainImages.txt
 Flickr_8k.testImages.txt
@@ -105,6 +105,8 @@ Saved_Model_name Overall BLEU_score: _model_inception_ep007_acc0.325_loss3.153_v
 BLEU-1: 0.634139 <br>
 BLEU-2: 0.404242 <br>
 
+BLEU score with BEAM didnot improve for my model. But there is more sense in sentences using BEAM.
+
 ![](./images/predicted_image_1.png)
 
 
@@ -114,3 +116,5 @@ BLEU-2: 0.404242 <br>
 
 https://www.youtube.com/watch?v=NfnWJUyUJYU&list=PLkt2uSq6rBVctENoVBg1TpCC7OQi31AlC
 https://towardsdatascience.com/image-captioning-with-keras-teaching-computers-to-describe-pictures-c88a46a311b8
+BLEU score https://towardsdatascience.com/bleu-bilingual-evaluation-understudy-2b4eab9bcfd1
+BLEU score https://www.aclweb.org/anthology/P02-1040.pdf
